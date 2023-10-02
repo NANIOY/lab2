@@ -47,9 +47,14 @@ export default class Island {
     // animate the element to a random position
     island.animate(
       [
-        // keyframes
-        { transform: "translate(-50%, -50%)" },
-        { transform: `translate(${Math.random() * 100}vw, ${Math.random() * 100}vh)` }
+        {
+          // start position in center of the screen
+          transform: "translate(-50%, -50%)"
+        },
+        {
+        // random end positin anywhere in the viewport
+        transform: `translate(${(Math.random() * 200 - 100)}vw, ${(Math.random() * 200 - 100)}vh)`
+        }
       ],
       {
         // timing options
