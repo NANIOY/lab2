@@ -1,5 +1,5 @@
 export default class Island {
-  constructor(name) {}
+  constructor(name) { }
 
   getRandomColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
@@ -52,8 +52,8 @@ export default class Island {
           transform: "translate(-50%, -50%)"
         },
         {
-        // random end positin anywhere in the viewport
-        transform: `translate(${(Math.random() * 200 - 100)}vw, ${(Math.random() * 200 - 100)}vh)`
+          // random end positin anywhere in the viewport
+          transform: `translate(${(Math.random() * 200 - 100)}vw, ${(Math.random() * 200 - 100)}vh)`
         }
       ],
       {
