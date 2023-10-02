@@ -25,6 +25,41 @@ export default class Island {
       "Paradise island"
     ];
 
-    // return a random name from the array
+    return names[Math.floor(Math.random() * names.length)];
+  }
+
+  add() {
+    // create a new element
+    const island = document.createElement("div");
+
+    // add a class to the element
+    island.classList.add("island");
+
+    // add a random name to the element
+    island.innerHTML = this.getRandomName();
+
+    // add a random color to the element
+    island.style.backgroundColor = this.getRandomColor();
+
+    // set initial position to the center of the screen
+    island.style.transform = "translate(-50%, -50%)";
+
+    // animate the element to a random position
+    island.animate(
+      [
+        // keyframes
+        { transform: "translate(-50%, -50%)" },
+        { transform: `translate(${Math.random() * 100}vw, ${Math.random() * 100}vh)` }
+      ],
+      {
+        // timing options
+        duration: 1000,
+        iterations: 1,
+        fill: "forwards"
+      }
+    );
+
+    // add the element to the DOM
+    document.body.appendChild(island);
   }
 }
