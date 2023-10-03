@@ -92,7 +92,6 @@ export default class World {
     }
   }
 
-
   moveIsland(island, x, y) {
     // define animation to move island to random coordinates
     island.animate([
