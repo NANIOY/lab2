@@ -43,6 +43,9 @@ export default class World {
     // Set initial position to the random coordinates
     islandElement.style.transform = `translate(${x}px, ${y}px)`;
 
+    // create new island instance to get random name and color
+    const island = new Island();
+
     // Animate the element to a random position
     islandElement.animate(
       [
