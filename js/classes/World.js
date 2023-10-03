@@ -1,4 +1,6 @@
-class World {
+import Island from '../classes/Island.js';
+
+export default class World {
   constructor() {
     this.islands = []; // a good place to keep track of your islands
     this.hookEvents(); // let's kick things of by hooking up events
@@ -6,6 +8,7 @@ class World {
 
   hookEvents() {
     // hook events like clicking buttons to a specific function
+
   }
 
   save() {
@@ -27,8 +30,8 @@ class World {
     };
   }
 
-  addIsland(island) {
-    // add the islands to the DOM
+  addIsland() {
+    
   }
 
   moveIsland(island) {
