@@ -62,8 +62,8 @@ export default class World {
     // get random coordinates using the getCoordinates() method
     const { x, y } = this.getCoordinates();
 
-    // set initial position to the random coordinates
-    islandElement.style.transform = `translate(${x}px, ${y}px)`;
+    // set initial position to the center of the screen
+    islandElement.style.transform = `translate(-50%, -50%)`;
 
     // create new island instance to get random name and color
     const island = new Island();
@@ -74,17 +74,27 @@ export default class World {
     // set island color as background color of element
     islandElement.style.backgroundColor = island.getRandomColor();
 
-   
-
     // add the island element to the DOM
     document.body.appendChild(islandElement);
 
     // add the island element to the islands array for tracking
     this.islands.push(islandElement);
+
+    // move island to random coordinates
+    this.moveIsland(islandElement, x, y);
   }
 
 
-  moveIsland(island) {
-    // this might be a good point to animate the islands with JS Animations API
+  moveIsland(island, x, y) {
+    // define animation to move island to random coordinates
+    island.animate([
+      { transform: 'translate(-50%, -50%)', opacity: 0 },
+      { opacity: 1 },
+      { transform: `translate(${x}px, ${y}px)`, opacity: 1 },
+    ], {
+      duration: 1000,
+      easing: 'ease-in-out',
+      fill: 'forwards'
+    });
   }
 }
