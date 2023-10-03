@@ -3,25 +3,6 @@ import Island from '../classes/Island.js';
 export default class World {
   constructor() {
     this.islands = []; // a good place to keep track of your islands
-    this.hookEvents(); // let's kick things of by hooking up events
-  }
-
-  hookEvents() {
-    const btnAddIsland = document.getElementById('btnAddIsland');
-    const btnSave = document.getElementById('btnSave');
-    const btnLoad = document.getElementById('btnLoad');
-
-    btnAddIsland.addEventListener('click', () => {
-      this.addIsland();
-    });
-
-    btnSave.addEventListener('click', () => {
-      this.save();
-    });
-
-    btnLoad.addEventListener('click', () => {
-      this.load();
-    });
   }
 
   save() {
