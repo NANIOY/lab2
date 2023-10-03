@@ -27,13 +27,13 @@ export default class World {
   save() {
     // convert islands array to JSON string
     const islandsJSON = JSON.stringify(this.islands.map(islandElement =>
-      ({
-        name: islandElement.innerText,
-        color: islandElement.style.backgroundColor,
-        position: islandElement.style.transform
-      })
+    ({
+      name: islandElement.innerText,
+      color: islandElement.style.backgroundColor,
+      transform: islandElement.style.transform
+    })
     ));
-    
+
     // save JSON string to localstorage
     localStorage.setItem('islandsJSON', islandsJSON);
   }
@@ -43,33 +43,26 @@ export default class World {
     const islandsJSON = localStorage.getItem('islandsJSON');
 
     if (islandsJSON) {
-      // parse JSON string to array of objects
+      // parse JSON string back into an array of island data
       const islandData = JSON.parse(islandsJSON);
 
       // clear current islands from the DOM and islands array
-      this.islands.forEach(island => island.remove());
+      this.islands.forEach((islandElement) => {
+        islandElement.remove();
+      });
+      this.islands = [];
 
       // add islands based on loaded data
-      islandData.forEach(island => {
-        // create a new HTML element to represent the island
+      islandData.forEach((island) => {
         const islandElement = document.createElement('div');
-
-        // add the "island" class to the island element
         islandElement.classList.add('island');
-
-        // set initial position to the center of the screen
-        islandElement.style.transform = island.position;
-
-        // set random island name as inner text of element
         islandElement.innerText = island.name;
-
-        // set island color as background color of element
         islandElement.style.backgroundColor = island.color;
 
-        // add the island element to the DOM
-        document.body.appendChild(islandElement);
+        // set the transform property directly from loaded data
+        islandElement.style.transform = island.transform;
 
-        // add the island element to the islands array for tracking
+        document.body.appendChild(islandElement);
         this.islands.push(islandElement);
       });
     }
@@ -91,12 +84,6 @@ export default class World {
     // add the "island" class to the island element
     islandElement.classList.add('island');
 
-    // get random coordinates using the getCoordinates() method
-    const { x, y } = this.getCoordinates();
-
-    // set initial position to the center of the screen
-    islandElement.style.transform = `translate(-50%, -50%)`;
-
     // create new island instance to get random name and color
     const island = new Island();
 
@@ -106,14 +93,22 @@ export default class World {
     // set island color as background color of element
     islandElement.style.backgroundColor = island.getRandomColor();
 
+    // Get random coordinates using the getCoordinates() method
+    const { x, y } = this.getCoordinates();
+
+    // Set initial position to the stored transform property or random coordinates
+    islandElement.style.transform = island.transform || `translate(${x}px, ${y}px)`;
+
     // add the island element to the DOM
     document.body.appendChild(islandElement);
 
     // add the island element to the islands array for tracking
     this.islands.push(islandElement);
 
-    // move island to random coordinates
-    this.moveIsland(islandElement, x, y);
+    // move island to random coordinates if not already in stored position
+    if (!island.transform) {
+      this.moveIsland(islandElement, x, y);
+    }
   }
 
 
