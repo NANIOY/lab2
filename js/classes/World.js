@@ -67,7 +67,15 @@ export default class World {
   }
 
 
-  moveIsland(island) {
-    
-}
+  moveIsland(island, x, y) {
+    // define animation to move island to random coordinates
+    island.animate([
+      { transform: 'translate(-50%, -50%)' },
+      { transform: `translate(${x}px, ${y}px)` }
+    ], {
+      duration: 2000,
+      easing: 'ease-in-out',
+      fill: 'forwards'
+    });
+  }
 }
