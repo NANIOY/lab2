@@ -33,7 +33,9 @@ export default class World {
         position: islandElement.style.transform
       })
     ));
-
+    
+    // save JSON string to localstorage
+    localStorage.setItem('islands', islandsJSON);
   }
 
   load() {
