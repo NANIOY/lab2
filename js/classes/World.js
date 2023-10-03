@@ -25,8 +25,15 @@ export default class World {
   }
 
   save() {
-    // save array islands to localstorage as string
-    // loop over all this.islands and save the names
+    // convert islands array to JSON string
+    const islandsJSON = JSON.stringify(this.islands.map(islandElement =>
+      ({
+        name: islandElement.innerText,
+        color: islandElement.style.backgroundColor,
+        position: islandElement.style.transform
+      })
+    ));
+
   }
 
   load() {
