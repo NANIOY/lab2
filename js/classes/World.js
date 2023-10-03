@@ -41,6 +41,38 @@ export default class World {
   load() {
     // load json string from localstorage
     const islandsJSON = localStorage.getItem('islandsJSON');
+
+    if (islandsJSON) {
+      // parse JSON string to array of objects
+      const islandData = JSON.parse(islandsJSON);
+
+      // clear current islands from the DOM and islands array
+      this.islands.forEach(island => island.remove());
+
+      // add islands based on loaded data
+      islandData.forEach(island => {
+        // create a new HTML element to represent the island
+        const islandElement = document.createElement('div');
+
+        // add the "island" class to the island element
+        islandElement.classList.add('island');
+
+        // set initial position to the center of the screen
+        islandElement.style.transform = island.position;
+
+        // set random island name as inner text of element
+        islandElement.innerText = island.name;
+
+        // set island color as background color of element
+        islandElement.style.backgroundColor = island.color;
+
+        // add the island element to the DOM
+        document.body.appendChild(islandElement);
+
+        // add the island element to the islands array for tracking
+        this.islands.push(islandElement);
+      });
+    }
   }
 
   getCoordinates() {
