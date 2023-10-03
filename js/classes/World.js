@@ -8,6 +8,8 @@ export default class World {
 
   hookEvents() {
     const btnAddIsland = document.getElementById('btnAddIsland');
+    const btnSave = document.getElementById('btnSave');
+    const btnLoad = document.getElementById('btnLoad');
 
     btnAddIsland.addEventListener('click', () => {
       this.addIsland();
