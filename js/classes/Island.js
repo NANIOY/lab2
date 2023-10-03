@@ -44,7 +44,7 @@ export default class Island {
 
     // calculate position within 70% of the viewport width and height, including negative values
     const viewportWidth = window.innerWidth * 0.9;
-    const viewportHeight = window.innerHeight * 0.6;
+    const viewportHeight = window.innerHeight * 0.9;
     const randomX = (Math.random() - 0.5) * viewportWidth;
     const randomY = (Math.random() - 0.5) * viewportHeight;
 
