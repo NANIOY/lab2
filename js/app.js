@@ -1,8 +1,8 @@
-import Island from './classes/Island.js';
+import World from './classes/World.js';
 
+const world = new World();
 const btnAddIsland = document.getElementById('btnAddIsland');
 
 btnAddIsland.addEventListener('click', () => {
-    const island = new Island();
-    island.add();
+    world.addIsland();
 });
