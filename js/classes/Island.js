@@ -41,8 +41,12 @@ export default class Island {
     // add a random color to the element
     island.style.backgroundColor = this.getRandomColor();
 
-    // set initial position to the center of the screen
-    island.style.transform = "translate(-50%, -50%)";
+
+    // calculate position within 70% of the viewport width and height, including negative values
+    const viewportWidth = window.innerWidth * 0.9;
+    const viewportHeight = window.innerHeight * 0.6;
+    const randomX = (Math.random() - 0.5) * viewportWidth;
+    const randomY = (Math.random() - 0.5) * viewportHeight;
 
     // animate the element to a random position
     island.animate(
@@ -52,8 +56,9 @@ export default class Island {
           transform: "translate(-50%, -50%)"
         },
         {
-          // random end positin anywhere in the viewport
-          transform: `translate(${(Math.random() * 200 - 100)}vw, ${(Math.random() * 200 - 100)}vh)`
+          // random end position within 70% of the viewport
+          transform: `translate(${randomX}px, ${randomY}px)`
+
         }
       ],
       {
