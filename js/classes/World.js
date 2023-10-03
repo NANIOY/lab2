@@ -46,6 +46,9 @@ export default class World {
     // create new island instance to get random name and color
     const island = new Island();
 
+    // set random island name as inner text of element
+    islandElement.innerText = island.getRandomName();
+
     // Animate the element to a random position
     islandElement.animate(
       [
