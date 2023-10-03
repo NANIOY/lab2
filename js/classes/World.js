@@ -49,6 +49,9 @@ export default class World {
     // set random island name as inner text of element
     islandElement.innerText = island.getRandomName();
 
+    // set island color as background color of element
+    islandElement.style.backgroundColor = island.getRandomColor();
+
     // Animate the element to a random position
     islandElement.animate(
       [
