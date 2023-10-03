@@ -7,7 +7,11 @@ export default class World {
   }
 
   hookEvents() {
-    // hook events like clicking buttons to a specific function
+    const btnAddIsland = document.getElementById('btnAddIsland');
+
+    btnAddIsland.addEventListener('click', () => {
+      this.addIsland();
+    });
 
   }
 
@@ -31,16 +35,16 @@ export default class World {
   }
 
   addIsland() {
-    // Create a new HTML element to represent the island
+    // create a new HTML element to represent the island
     const islandElement = document.createElement('div');
 
-    // Add the "island" class to the island element
+    // add the "island" class to the island element
     islandElement.classList.add('island');
-    
-    // Get random coordinates using the getCoordinates() method
+
+    // get random coordinates using the getCoordinates() method
     const { x, y } = this.getCoordinates();
 
-    // Set initial position to the random coordinates
+    // set initial position to the random coordinates
     islandElement.style.transform = `translate(${x}px, ${y}px)`;
 
     // create new island instance to get random name and color
@@ -52,14 +56,14 @@ export default class World {
     // set island color as background color of element
     islandElement.style.backgroundColor = island.getRandomColor();
 
-    // Animate the element to a random position
+    // animate the element to a random position
     islandElement.animate(
       [
         {
           transform: `translate(${x}px, ${y}px)`
         },
         {
-          // Add animation targets as needed
+          // add animation targets as needed
         }
       ],
       {
@@ -69,10 +73,10 @@ export default class World {
       }
     );
 
-    // Add the island element to the DOM
+    // add the island element to the DOM
     document.body.appendChild(islandElement);
 
-    // Add the island element to the islands array for tracking
+    // add the island element to the islands array for tracking
     this.islands.push(islandElement);
   }
 
