@@ -15,6 +15,13 @@ export default class World {
       this.addIsland();
     });
 
+    btnSave.addEventListener('click', () => {
+      this.save();
+    });
+
+    btnLoad.addEventListener('click', () => {
+      this.load();
+    });
   }
 
   save() {
