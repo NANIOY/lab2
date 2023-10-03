@@ -31,8 +31,42 @@ export default class World {
   }
 
   addIsland() {
+    // Create a new HTML element to represent the island
+    const islandElement = document.createElement('div');
+
+    // Add the "island" class to the island element
+    islandElement.classList.add('island');
     
+    // Get random coordinates using the getCoordinates() method
+    const { x, y } = this.getCoordinates();
+
+    // Set initial position to the random coordinates
+    islandElement.style.transform = `translate(${x}px, ${y}px)`;
+
+    // Animate the element to a random position
+    islandElement.animate(
+      [
+        {
+          transform: `translate(${x}px, ${y}px)`
+        },
+        {
+          // Add animation targets as needed
+        }
+      ],
+      {
+        duration: 1000,
+        iterations: 1,
+        fill: "forwards"
+      }
+    );
+
+    // Add the island element to the DOM
+    document.body.appendChild(islandElement);
+
+    // Add the island element to the islands array for tracking
+    this.islands.push(islandElement);
   }
+
 
   moveIsland(island) {
     // this might be a good point to animate the islands with JS Animations API
