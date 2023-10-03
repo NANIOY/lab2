@@ -56,22 +56,7 @@ export default class World {
     // set island color as background color of element
     islandElement.style.backgroundColor = island.getRandomColor();
 
-    // animate the element to a random position
-    islandElement.animate(
-      [
-        {
-          transform: `translate(${x}px, ${y}px)`
-        },
-        {
-          // add animation targets as needed
-        }
-      ],
-      {
-        duration: 1000,
-        iterations: 1,
-        fill: "forwards"
-      }
-    );
+   
 
     // add the island element to the DOM
     document.body.appendChild(islandElement);
