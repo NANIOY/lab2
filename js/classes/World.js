@@ -39,8 +39,8 @@ export default class World {
   }
 
   load() {
-    // load islands from localstorage into array
-    // loop over the array and addIslands()
+    // load json string from localstorage
+    const islandsJSON = localStorage.getItem('islandsJSON');
   }
 
   getCoordinates() {
